@@ -11,6 +11,11 @@ module DumbCoder
 end
 
 class User < ApplicationRecord
+  # Using ActiveRecord::Store
+  # store :settings, accessors: [ :weekly_email, :monthly_newsletter ], coder: JSON
+  # store_accessor :preferences, :playback_rate
+
+  # Using ActiveRecord-TypedStore
   typed_store :settings, coder: JSON do |s|
     s.boolean :weekly_email, default: true
     s.boolean :monthly_newsletter, default: true
